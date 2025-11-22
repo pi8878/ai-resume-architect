@@ -1,16 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+# What the application is about
+🧠 Problem it Solves:
 
-This contains everything you need to run your app locally.
+Many qualified candidates are filtered out by Applicant Tracking Systems (ATS) because their resumes lack the specific keywords listed in job descriptions. This tool helps job seekers optimize their resumes to match job postings and increase their chances of getting noticed.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1sdGdps1rO5OtEDyl2_ygClgOdVPlXZwc
+⚙️ What It Does:
+
+Takes a resume and a job description as input.
+
+Extracts keywords and key phrases (skills, tools, action verbs, titles).
+
+Compares the two and highlights missing keywords in the resume.
+
+Displays results in a clean, interactive UI using Streamlit.
+
+
 
 ## Run Locally
 
 **Prerequisites:**  Node.js
+I utilized AI to fully customize and build this website
 
 
 1. Install dependencies:
