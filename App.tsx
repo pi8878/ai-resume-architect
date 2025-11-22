@@ -146,7 +146,7 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-8 transition-colors">
         <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 dark:text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} AI Resume Architect. Powered by Gemini 2.5 Flash.</p>
+          <p>© {new Date().getFullYear()} AI Resume Grader</p>
         </div>
       </footer>
     </div>
