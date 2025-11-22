@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 
@@ -23,12 +24,13 @@ export const analyzeResumeMatch = async (
       ${jobDescription}
       
       Analyze the following:
-      1. Calculate a match score (0-100) based on skills, experience, and semantic relevance.
-      2. Identify keywords present in both texts (Matched).
-      3. Identify critical keywords/skills missing from the resume but present in the JD (Missing).
-      4. List specific strengths of the candidate for this role.
-      5. Provide actionable improvements (bullet points) to increase the match score.
-      6. Assess cultural fit based on the tone of the JD vs Resume.
+      1. Extract the Job Title from the JD.
+      2. Calculate a match score (0-100) based on skills, experience, and semantic relevance.
+      3. Identify keywords present in both texts (Matched).
+      4. Identify critical keywords/skills missing from the resume but present in the JD (Missing).
+      5. List specific strengths of the candidate for this role.
+      6. Provide actionable improvements (bullet points) to increase the match score.
+      7. Assess cultural fit based on the tone of the JD vs Resume.
       
       Return the response in JSON format.
     `;
@@ -58,6 +60,7 @@ export const analyzeResumeMatch = async (
         responseSchema: {
           type: Type.OBJECT,
           properties: {
+            jobTitle: { type: Type.STRING, description: "The job title extracted from the job description" },
             score: { type: Type.NUMBER, description: "Match score from 0 to 100" },
             matchLevel: { type: Type.STRING, enum: ["Low", "Moderate", "High", "Perfect"] },
             summary: { type: Type.STRING, description: "A brief executive summary of the match analysis" },
@@ -83,7 +86,7 @@ export const analyzeResumeMatch = async (
             },
             culturalFit: { type: Type.STRING, description: "Brief assessment of tone/culture alignment" }
           },
-          required: ["score", "matchLevel", "summary", "matchedKeywords", "missingKeywords", "strengths", "improvements", "culturalFit"]
+          required: ["jobTitle", "score", "matchLevel", "summary", "matchedKeywords", "missingKeywords", "strengths", "improvements", "culturalFit"]
         }
       }
     });
@@ -93,7 +96,12 @@ export const analyzeResumeMatch = async (
         throw new Error("No response received from AI");
     }
 
-    return JSON.parse(text) as AnalysisResult;
+    const result = JSON.parse(text) as AnalysisResult;
+    
+    // Inject client-side timestamp
+    result.timestamp = new Date().toISOString();
+    
+    return result;
 
   } catch (error) {
     console.error("Error analyzing resume:", error);
