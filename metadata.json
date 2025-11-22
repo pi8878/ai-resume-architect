@@ -1,0 +1,5 @@
+{
+  "name": "AI Resume Architect",
+  "description": "A modern, AI-powered resume analyzer that compares your resume against job descriptions to provide actionable scoring, keyword gap analysis, and improvement suggestions.",
+  "requestFramePermissions": []
+}
