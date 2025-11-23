@@ -12,7 +12,7 @@ Extracts keywords and key phrases (skills, tools, action verbs, titles).
 
 Compares the two and highlights missing keywords in the resume.
 
-Displays results in a clean, interactive UI using Streamlit.
+Displays results in a clean, interactive UI.
 
 
 
